@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Scale, BarChart2, Briefcase, MapPin, Building2, ExternalLink, AlertTriangle } from 'lucide-react';
+import { Scale, BarChart2, Briefcase, MapPin, Building2, Shield, ExternalLink, AlertTriangle } from 'lucide-react';
 import CoatOfArms from '../components/CoatOfArms';
 
 const ACTS = [
@@ -56,6 +56,24 @@ const ACTS = [
     description: 'Establishes the Business Registration Service and regulates business name registration and related matters.',
     url: 'https://kenyalaw.org',
     provisions: 42,
+  },
+  {
+    id: 'cybercrime',
+    name: 'Computer Misuse and Cybercrimes Act, 2018',
+    domain: 'Cybercrime',
+    domainColor: '#EF4444',
+    description: 'Prohibits and penalises computer misuse and cybercrimes including unauthorised access, cyber harassment, identity theft, and cyber espionage.',
+    url: 'https://kenyalaw.org',
+    provisions: 91,
+  },
+  {
+    id: 'cybercrime-amendment',
+    name: 'Computer Misuse and Cybercrimes Amendment Act, 2025',
+    domain: 'Cybercrime',
+    domainColor: '#EF4444',
+    description: 'Amends the 2018 Act with updated provisions reflecting emerging cybercrime threats and digital regulation in Kenya.',
+    url: 'https://kenyalaw.org',
+    provisions: 5,
   },
 ];
 
@@ -135,7 +153,7 @@ export default function About() {
             <h2 className="font-display text-3xl font-bold text-[#1B4332] mb-2">Legal Knowledge Base</h2>
             <div style={{ background: 'linear-gradient(90deg, #D4A017, transparent)', height: '2px', width: '60px', marginBottom: '16px' }} />
             <p className="text-[#6B7280] max-w-2xl leading-relaxed">
-              Six primary Acts currently indexed across three legal domains. All source legislation is publicly available via Kenya Law.
+              Eight Acts currently indexed across four legal domains. All source legislation is publicly available via Kenya Law.
             </p>
           </div>
 
@@ -154,7 +172,7 @@ export default function About() {
                     className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium"
                     style={{ backgroundColor: `${act.domainColor}15`, color: act.domainColor, border: `1px solid ${act.domainColor}30` }}
                   >
-                    {act.domain === 'Employment' ? <Briefcase size={10} /> : act.domain === 'Land' ? <MapPin size={10} /> : <Building2 size={10} />}
+                    {act.domain === 'Employment' ? <Briefcase size={10} /> : act.domain === 'Land' ? <MapPin size={10} /> : act.domain === 'Cybercrime' ? <Shield size={10} /> : <Building2 size={10} />}
                     {act.domain}
                   </span>
                   <span className="text-xs font-code text-[#A8B4AA]">{act.provisions} provisions</span>
