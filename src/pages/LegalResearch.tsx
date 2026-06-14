@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import { useMutation } from '@tanstack/react-query';
 import { api, QueryResponse } from '../lib/api';
+import ReactMarkdown from 'react-markdown';
 
 const DOMAINS = [
   { id: 'employment', label: 'Employment', icon: Briefcase, color: '#22C55E' },
@@ -133,7 +134,9 @@ function ResultCard({ result, onRetry }: { result: QueryResponse; onRetry: () =>
           <div key={section.key}>
             <h4 className="font-display text-[#1B4332] font-semibold text-base mb-1.5">{section.label}</h4>
             <div className="gold-divider mb-2" />
-            <p className="text-[#1A1A1A] leading-relaxed text-sm">{section.value}</p>
+            <div className="text-[#1A1A1A] leading-relaxed text-sm prose prose-sm max-w-none prose-p:my-2 prose-ul:my-2 prose-li:my-0.5 prose-strong:text-[#1B4332] prose-strong:font-semibold">
+              <ReactMarkdown>{section.value}</ReactMarkdown>
+            </div>
           </div>
         ))}
       </div>
