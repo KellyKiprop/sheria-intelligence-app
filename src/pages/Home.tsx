@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Scale, BarChart2, Briefcase, MapPin, Building2, ChevronRight, ArrowRight } from 'lucide-react';
+import { Scale, BarChart2, Briefcase, MapPin, Building2, ChevronRight, ArrowRight, ShieldAlert } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
 import AnimatedCounter from '../components/AnimatedCounter';
 import CoatOfArms from '../components/CoatOfArms';
@@ -68,6 +68,13 @@ const DOMAIN_CARDS = [
     description: 'Company formation, contracts, insolvency, competition law, and regulatory compliance.',
     color: '#3B82F6',
   },
+  {
+    id: 'cybercrime',
+    icon: ShieldAlert,
+    name: 'Cybercrime Law',
+    description: 'Computer misuse, online fraud, data protection offences, and digital crime under Kenyan law.',
+    color: '#EF4444',
+  },
 ];
 
 export default function Home() {
@@ -77,9 +84,9 @@ export default function Home() {
     retry: false,
   });
 
-  const actsIndexed = stats?.acts_indexed ?? 6;
-  const provisions = stats?.legal_provisions ?? 1937;
-  const flaggedBillions = stats?.funds_flagged_kes_billions ?? 92.56;
+  const actsIndexed = stats?.total_documents ?? 8;
+  const provisions = stats?.total_chunks ?? 2033;
+  const flaggedBillions = 92.56;
 
   return (
     <div className="min-h-screen">
@@ -273,7 +280,7 @@ export default function Home() {
               <Scale className="text-[#22C55E] mb-4" size={32} />
               <h3 className="font-display text-2xl text-white font-bold mb-3">Legal Research Engine</h3>
               <p className="text-[#A8C4B4] leading-relaxed mb-4">
-                Ask complex legal questions in plain language. Sheria retrieves and synthesizes relevant provisions from Kenyan legislation, providing structured responses across Employment, Land, and Business law domains.
+                Ask complex legal questions in plain language. Sheria retrieves and synthesizes relevant provisions from Kenyan legislation, providing structured responses across Employment, Land, Business, and Cybercrime law domains.
               </p>
               <Link
                 to="/legal"

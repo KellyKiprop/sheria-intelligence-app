@@ -1,9 +1,11 @@
 const BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
 
 export interface StatsResponse {
-  acts_indexed: number;
-  legal_provisions: number;
-  funds_flagged_kes_billions: number;
+  total_documents: number;
+  total_chunks: number;
+  total_embeddings: number;
+  domains: Record<string, number>;
+  total_queries: number;
 }
 
 export interface DomainCard {
