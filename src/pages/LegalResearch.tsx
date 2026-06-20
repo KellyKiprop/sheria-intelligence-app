@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  Scale, Search, Briefcase, MapPin, Building2, Shield,
+  Scale, Search, Briefcase, MapPin, Building2, Shield, Gavel,
   ChevronDown, Copy, RotateCcw, AlertCircle
 } from 'lucide-react';
 import { useMutation } from '@tanstack/react-query';
@@ -13,6 +13,7 @@ const DOMAINS = [
   { id: 'land', label: 'Land', icon: MapPin, color: '#D4A017' },
   { id: 'business', label: 'Business', icon: Building2, color: '#3B82F6' },
   { id: 'cybercrime', label: 'Cybercrime', icon: Shield, color: '#EF4444' },
+  { id: 'criminal', label: 'Criminal', icon: Gavel, color: '#8B5CF6' },
 ];
 
 function DomainBadge({ domain }: { domain: string }) {

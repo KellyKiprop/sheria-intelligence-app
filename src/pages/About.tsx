@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Scale, BarChart2, Briefcase, MapPin, Building2, Shield, ExternalLink, AlertTriangle } from 'lucide-react';
+import { Scale, BarChart2, Briefcase, MapPin, Building2, Shield, Gavel, ExternalLink, AlertTriangle } from 'lucide-react';
 import CoatOfArms from '../components/CoatOfArms';
 
 const ACTS = [
@@ -74,6 +74,24 @@ const ACTS = [
     description: 'Amends the 2018 Act with updated provisions reflecting emerging cybercrime threats and digital regulation in Kenya.',
     url: 'https://kenyalaw.org',
     provisions: 5,
+  },
+  {
+    id: 'anti-counterfeit',
+    name: 'Anti-Counterfeit Act, 2008',
+    domain: 'Business',
+    domainColor: '#3B82F6',
+    description: 'Prohibits trade in counterfeit goods and establishes the Anti-Counterfeit Authority to protect intellectual property rights.',
+    url: 'https://www.aca.go.ke',
+    provisions: 69,
+  },
+  {
+    id: 'penal-code',
+    name: 'Penal Code, Cap 63',
+    domain: 'Criminal',
+    domainColor: '#8B5CF6',
+    description: 'Defines criminal offences and penalties in Kenya, covering crimes against persons, property, and public order.',
+    url: 'https://new.kenyalaw.org',
+    provisions: 310,
   },
 ];
 
@@ -153,7 +171,7 @@ export default function About() {
             <h2 className="font-display text-3xl font-bold text-[#1B4332] mb-2">Legal Knowledge Base</h2>
             <div style={{ background: 'linear-gradient(90deg, #D4A017, transparent)', height: '2px', width: '60px', marginBottom: '16px' }} />
             <p className="text-[#6B7280] max-w-2xl leading-relaxed">
-              Eight Acts currently indexed across four legal domains. All source legislation is publicly available via Kenya Law.
+              Ten Acts currently indexed across five legal domains. All source legislation is publicly available via Kenya Law.
             </p>
           </div>
 

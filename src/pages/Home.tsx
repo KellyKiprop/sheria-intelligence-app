@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Scale, BarChart2, Briefcase, MapPin, Building2, ChevronRight, ArrowRight, ShieldAlert } from 'lucide-react';
+import { Scale, BarChart2, Briefcase, MapPin, Building2, ChevronRight, ArrowRight, ShieldAlert, Gavel } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
 import AnimatedCounter from '../components/AnimatedCounter';
 import CoatOfArms from '../components/CoatOfArms';
@@ -74,6 +74,13 @@ const DOMAIN_CARDS = [
     name: 'Cybercrime Law',
     description: 'Computer misuse, online fraud, data protection offences, and digital crime under Kenyan law.',
     color: '#EF4444',
+  },
+  {
+    id: 'criminal',
+    icon: Gavel,
+    name: 'Criminal Law',
+    description: 'Criminal offences, penalties, arrest procedures, and prosecution under the Penal Code.',
+    color: '#8B5CF6',
   },
 ];
 
