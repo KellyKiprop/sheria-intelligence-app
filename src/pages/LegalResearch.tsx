@@ -367,12 +367,13 @@ function SessionSidebar({
   return (
     <div className="w-64 flex-shrink-0 flex flex-col border-r border-[#E8E4DE] bg-white">
       <div className="flex items-center justify-between p-3 border-b border-[#E8E4DE]">
-        <span className="text-xs uppercase tracking-widest text-[#6B7280] font-medium">
-          Research Sessions
-        </span>
+        <div className="min-w-0">
+          <p className="font-display font-bold text-[#1B4332] text-base leading-tight">Sheria</p>
+          <p className="text-xs text-[#6B7280]">Legal Research</p>
+        </div>
         <button
           onClick={onToggleCollapse}
-          className="p-1.5 text-[#6B7280] hover:text-[#1B4332] transition-colors"
+          className="p-1.5 text-[#6B7280] hover:text-[#1B4332] transition-colors flex-shrink-0"
           title="Hide sidebar"
         >
           <PanelLeftClose size={16} />
@@ -495,18 +496,8 @@ export default function LegalResearch({ tier, onTierChange }: LegalResearchProps
 
   return (
     <div className="min-h-screen bg-[#F9F7F4] pt-16">
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="mb-6">
-          <div className="gold-divider max-w-xs mb-4" />
-          <h1 className="font-display text-3xl sm:text-4xl font-bold text-[#1B4332] mb-2">
-            Legal Research
-          </h1>
-          <p className="text-[#6B7280] text-sm">
-            Ask questions about Kenyan law. Sheria remembers each conversation as you go.
-          </p>
-        </div>
-
-        <div className="mb-5 flex bg-white border border-[#E8E4DE] rounded-xl p-1 max-w-xs">
+      <div className="max-w-7xl mx-auto px-4 py-4">
+        <div className="mb-3 flex bg-white border border-[#E8E4DE] rounded-xl p-1 max-w-xs">
           {(['public', 'professional'] as const).map((t) => (
             <button
               key={t}
@@ -523,7 +514,7 @@ export default function LegalResearch({ tier, onTierChange }: LegalResearchProps
 
         <div
           className="bg-white rounded-2xl border border-[#E8E4DE] shadow-sm flex overflow-hidden"
-          style={{ height: 'calc(100vh - 20rem)' }}
+          style={{ height: 'calc(100vh - 11rem)' }}
         >
           <SessionSidebar
             sessions={sessions}
