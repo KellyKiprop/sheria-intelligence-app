@@ -210,7 +210,16 @@ function MessageBubble({
               </div>
 
               <div className="text-[#1A1A1A] leading-relaxed text-sm prose prose-sm max-w-none prose-p:my-2 prose-ul:my-2 prose-li:my-0.5 prose-strong:text-[#1B4332] prose-strong:font-semibold">
-                <ReactMarkdown>{message.result.response}</ReactMarkdown>
+                <ReactMarkdown>
+                  {message.result.response
+                    .replace(/\*\*Legal Sources Referenced:\*\*/g, '')
+                    .replace(/^- .+\|.+$/gm, '')
+                    .replace(/
+{3,}/g, '
+
+')
+                    .trim()}
+                </ReactMarkdown>
               </div>
 
               {message.result.follow_up_questions.length > 0 && (
@@ -337,6 +346,8 @@ function SessionSidebar({
   onDelete: (id: string) => void;
   collapsed: boolean;
   onToggleCollapse: () => void;
+  tier: 'public' | 'professional';
+  onTierChange: (tier: 'public' | 'professional') => void;
 }) {
   const [pendingDeleteId, setPendingDeleteId] = useState<string | null>(null);
 
@@ -380,13 +391,27 @@ function SessionSidebar({
         </button>
       </div>
 
-      <div className="p-2">
+      <div className="p-2 space-y-2">
         <button
           onClick={onNew}
           className="w-full flex items-center gap-2 px-3 py-2.5 text-sm font-medium text-[#D4A017] bg-[#1B4332] hover:bg-[#2D6A4F] rounded-lg transition-colors"
         >
           <Plus size={15} /> New Chat
         </button>
+        <div className="flex bg-[#F5F2EE] rounded-lg p-0.5">
+          {(['public', 'professional'] as const).map((t) => (
+            <button
+              key={t}
+              onClick={() => onTierChange(t)}
+              className={
+                'flex-1 py-1.5 text-xs rounded-md font-medium transition-all duration-200 ' +
+                (tier === t ? 'bg-white text-[#1B4332] shadow-sm' : 'text-[#6B7280] hover:text-[#1A1A1A]')
+              }
+            >
+              {t === 'public' ? 'Public' : 'Professional'}
+            </button>
+          ))}
+        </div>
       </div>
 
       <div className="flex-1 overflow-y-auto px-2 pb-2 space-y-1">
@@ -497,21 +522,6 @@ export default function LegalResearch({ tier, onTierChange }: LegalResearchProps
   return (
     <div className="min-h-screen bg-[#F9F7F4] pt-16">
       <div className="max-w-7xl mx-auto px-4 py-4">
-        <div className="mb-3 flex bg-white border border-[#E8E4DE] rounded-xl p-1 max-w-xs">
-          {(['public', 'professional'] as const).map((t) => (
-            <button
-              key={t}
-              onClick={() => onTierChange(t)}
-              className={
-                'flex-1 py-2 text-sm rounded-lg font-medium transition-all duration-200 ' +
-                (tier === t ? 'bg-[#1B4332] text-[#D4A017] shadow-sm' : 'text-[#6B7280] hover:text-[#1A1A1A]')
-              }
-            >
-              {t === 'public' ? 'Public Citizen' : 'Legal Professional'}
-            </button>
-          ))}
-        </div>
-
         <div
           className="bg-white rounded-2xl border border-[#E8E4DE] shadow-sm flex overflow-hidden"
           style={{ height: 'calc(100vh - 11rem)' }}
@@ -524,6 +534,8 @@ export default function LegalResearch({ tier, onTierChange }: LegalResearchProps
             onDelete={deleteSession}
             collapsed={sidebarCollapsed}
             onToggleCollapse={() => setSidebarCollapsed(!sidebarCollapsed)}
+            tier={tier}
+            onTierChange={onTierChange}
           />
 
           <div className="flex-1 flex flex-col min-w-0">
